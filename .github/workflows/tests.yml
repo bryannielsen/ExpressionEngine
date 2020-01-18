@@ -34,5 +34,5 @@ jobs:
 
             - name: Run PHPUnit Tests
               working-directory: system/ee/EllisLab/Tests/
-              run: vendor/bin/phpunit
+              run: vendor/bin/phpunit ExpressionEngine
 
