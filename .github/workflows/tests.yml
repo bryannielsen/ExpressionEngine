@@ -12,7 +12,7 @@ jobs:
 
         strategy:
             matrix:
-                php: [7.2, 7.1, 5.6]
+                php: [7.1, 5.6]
                 os: [ubuntu-latest]
 
         name: P${{ matrix.php }} - ${{ matrix.os }}
@@ -34,5 +34,5 @@ jobs:
 
             - name: Run PHPUnit Tests
               working-directory: system/ee/EllisLab/Tests/
-              run: vendor/bin/phpunit ExpressionEngine
+              run: vendor/bin/phpunit --configuration=./system/ee/EllisLab/Tests/phpunit.xml
 

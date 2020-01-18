@@ -1,5 +1,4 @@
 <?php
-
 // Report all errors
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', 1);
@@ -21,7 +20,7 @@ define('SELF', 'index.php');
 define('LD', '{');
 define('RD', '}');
 
-$constants = require '../ExpressionEngine/Config/constants.php';
+$constants = require __DIR__ .'/../ExpressionEngine/Config/constants.php';
 
 foreach ($constants as $name => $val)
 {
