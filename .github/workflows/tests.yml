@@ -40,7 +40,7 @@ jobs:
               run: php -r "file_exists('system/user/config/config.php') || copy('tests/docker/config.php', 'system/user/config/config.php');"
 
             - name: PHPLint
-              uses: michaelw90/PHP-Lint@master
+              uses: awanesia/PHP-Lint@master
 
             - name: Install dependencies
               working-directory: system/ee/EllisLab/Tests/
