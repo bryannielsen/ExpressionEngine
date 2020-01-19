@@ -83,8 +83,11 @@ class NumberFormatterTest extends TestCase {
 			'decimals' => $decimals,
 		];
 
-		$number = (string) $this->format($content, $opts)->currency($params);
-		$this->assertEquals($expected, $number);
+        $number = (string) $this->format($content, $opts)->currency($params);
+        if($expected != $number) {
+            var_dump($expected, $number);
+        }
+		$this->assertEquals(addslashes($expected), addslashes($number));
 	}
 
 	public function currencyProvider()
@@ -99,16 +102,16 @@ class NumberFormatterTest extends TestCase {
 			[112358.13, 'AUD', 'de_DE', '112.358,13 AU$', 0b00000001],
 			[112358.13, 'RUR', 'ru', '112 358,13 р.', 0b00000001],
 			[112358.13, 'UAH', 'uk', '112 358,13 ₴', 0b00000001],
-			[112358.13, 'UAH', 'en', (defined('INTL_ICU_VERSION') && version_compare(INTL_ICU_VERSION, '4.8', '>') ? 'UAH112,358.13' : '₴1,234,567.89'), 0b00000001],
+			[112358.13, 'UAH', 'en', (defined('INTL_ICU_VERSION') && version_compare(INTL_ICU_VERSION, '4.8', '>') ? 'UAH 112,358.13' : '₴1,234,567.89'), 0b00000001],
 			['fake', NULL, NULL, '$0.00', 0b00000001],
 
 			// no intl extension
 			[112358.13, NULL, NULL, '$112,358.13', 0],
 			[112358.13, NULL, NULL, '$112,358', 0, 0],
-			[112358.13, 'EUR', 'de_DE', '112.358,13 EUR', 0],
+			[112358.13, 'EUR', 'de_DE', 'Eu112.358,13', 0],
 			[112358.13, 'GBP', 'en_UK', '112358.13', 0],
 			[112358.13, 'AUD', 'en_US.UTF-8', '$112,358.13', 0],
-			[112358.13, 'AUD', 'de_DE', '112.358,13 EUR', 0],
+			[112358.13, 'AUD', 'de_DE', 'Eu112.358,13', 0],
 			[112358.13, 'RUR', 'ru', '112358.13', 0],
 			[112358.13, 'UAH', 'uk', '112358.13', 0],
 			[112358.13, 'UAH', 'en', '112358.13', 0],
@@ -187,7 +190,7 @@ class NumberFormatterTest extends TestCase {
 			// with intl extension
 			[11235813, NULL, '11,235,813th', 0b00000001],
 			[11235813, 'de', '11.235.813.', 0b00000001],
-			[11235813, 'fr', '11 235 813e', 0b00000001],
+			[11235813, 'fr', '11 235 813e', 0b00000001],
 			['fake', NULL, '0th', 0b00000001],
 
 			// no intl extension
