@@ -18,9 +18,6 @@ jobs:
         name: P${{ matrix.php }} - ${{ matrix.os }}
 
         steps:
-            - name: List locales
-              run: locale -a
-
             - name: Install locales
               run: |
                 sudo locale-gen en
@@ -28,9 +25,6 @@ jobs:
                 sudo locale-gen de_DE
                 sudo locale-gen uk
                 sudo locale-gen ru
-
-            - name: List locales
-              run: locale -a
 
             - name: Checkout code
               uses: actions/checkout@v1
