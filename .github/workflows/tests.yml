@@ -18,6 +18,20 @@ jobs:
         name: P${{ matrix.php }} - ${{ matrix.os }}
 
         steps:
+            - name: List locales
+              run: locale -a
+
+            - name: Install locales
+              run: |
+                sudo locale-gen en
+                sudo locale-gen de
+                sudo locale-gen de_DE
+                sudo locale-gen uk
+                sudo locale-gen ru
+
+            - name: List locales
+              run: locale -a
+
             - name: Checkout code
               uses: actions/checkout@v1
 
@@ -30,9 +44,6 @@ jobs:
 
             - name: Copy config.php
               run: php -r "file_exists('system/user/config/config.php') || copy('tests/docker/config.php', 'system/user/config/config.php');"
-
-            - name: Install locales
-              run: locale-gen en
 
             - name: Install dependencies
               working-directory: system/ee/EllisLab/Tests/
