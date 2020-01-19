@@ -32,12 +32,7 @@ jobs:
               run: php -r "file_exists('system/user/config/config.php') || copy('tests/docker/config.php', 'system/user/config/config.php');"
 
             - name: Install locales
-              run: |
-                locale-gen en
-                locale-gen de
-                locale-gen de_DE
-                locale-gen uk
-                locale-gen ru
+              run: locale-gen en
 
             - name: Install dependencies
               working-directory: system/ee/EllisLab/Tests/
