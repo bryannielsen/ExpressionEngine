@@ -46,7 +46,7 @@ jobs:
                 composer require overtrue/phplint --dev --no-progress --no-suggest --prefer-dist
 
             - name: Run phplint
-              run: ./system/ee/EllisLab/Tests/vendor/bin/phplint ./ --exclude=system/ee/EllisLab/Tests/vendor
+              run: ./system/ee/EllisLab/Tests/vendor/bin/phplint ./ --exclude=system/ee/EllisLab/Tests/vendor --exclude=system/ee/installer/config/config_tmpl.php
 
             - name: Run PHPUnit Tests
               working-directory: system/ee/EllisLab/Tests/
