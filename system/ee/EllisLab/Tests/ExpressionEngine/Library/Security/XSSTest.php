@@ -27,9 +27,6 @@ class XSSTest extends TestCase {
 		$this->xss = NULL;
 	}
 
-    /**
-     * @runInSeparateProcess
-     */
 	public function testXssClean()
 	{
 		$testArray = array(
