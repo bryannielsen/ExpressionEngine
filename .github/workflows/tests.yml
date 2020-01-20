@@ -62,6 +62,7 @@ jobs:
 
             - name: Install Ruby dependencies
               run: |
+                gem install bundler
                 bundle install --no-deployment --gemfile=tests/rspec/Gemfile --jobs 4 --retry 3 --path=vendor/bundle
 
             - name: Start webserver
