@@ -85,6 +85,9 @@ jobs:
             - name: Start webserver
               run: sudo php -S localhost:80 &
 
+            - name: Current Directory
+              run: php -r "echo __DIR__;"
+
             - name: Configure MySQL
               run: |
                 mysql -u root -proot -e 'CREATE DATABASE `ee-test`;'
