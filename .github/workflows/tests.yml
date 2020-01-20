@@ -95,12 +95,11 @@ jobs:
               run: xvfb-run -a bundle exec rspec -c -fd -fh -o screenshots/rspec.html tests/files/test_crop.rb
 
             - name: Archive RSpec output
-              working-directory: tests/rspec
               uses: actions/upload-artifact@v1
               if: failure()
               with:
                 name: rspec
-                path: screenshots/rspec.html
+                path: tests/rspec/screenshots/rspec.html
 
             - name: Compress Screenshots
               working-directory: tests/rspec
@@ -108,9 +107,8 @@ jobs:
               run: zip -r screenshots.zip screenshots
 
             - name: Archive screenshots
-              working-directory: tests/rspec
               uses: actions/upload-artifact@v1
               if: failure()
               with:
                 name: rspec-files
-                path: screenshots.zip
+                path: tests/rspec/screenshots.zip
