@@ -5,7 +5,7 @@
 #
 $test_config = {
   # URL Capybara will use to access your EE install
-  app_host:    'http://localhost:80/',
+  app_host:    'http://localhost:8080/',
 
   # DB settings for resetting your database
   db_host:     '127.0.0.1',
