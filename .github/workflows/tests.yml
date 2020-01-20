@@ -92,4 +92,19 @@ jobs:
 
             - name: Run RSpec tests
               working-directory: tests/rspec
-              run: xvfb-run -a bundle exec rspec -c -fd tests/**/*.rb
+              run: xvfb-run -a bundle exec rspec -c -fd -fh -o screenshots/rspec.html tests/files/*.rb
+
+            - name: Archive RSpec output
+              uses: actions/upload-artifact@v1
+              with:
+                name: rspec
+                path: screenshots/rspec.html
+
+            - name: Compress Screenshots
+              run: zip -r screenshots.zip screenshots
+
+            - name: Archive screenshots
+              uses: actions/upload-artifact@v1
+              with:
+                name: rspec-files
+                path: screenshots.zip
