@@ -45,7 +45,7 @@ jobs:
             - name: Setup Permissions
               run: |
                 cp tests/docker/EllisLabUpdate.pub system/ee/EllisLab/ExpressionEngine
-                sudo mkdir /tmp
+                sudo mkdir -p /tmp
                 sudo chmod -R 777 /tmp
                 sudo chmod 666 system/user/config/config.php
                 sudo chmod -R 777 system/user/cache
