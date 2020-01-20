@@ -10,16 +10,16 @@ jobs:
     php-tests:
         runs-on: ${{ matrix.os }}
 
-        services:
-            mysql:
-                image: mysql:5.7
-                env:
-                    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-                    MYSQL_ROOT_PASSWORD: 'root'
-                    MYSQL_DATABASE: 'ee-test'
-                ports:
-                    - 3306/tcp
-                options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        # services:
+        #     mysql:
+        #         image: mysql:5.7
+        #         env:
+        #             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        #             MYSQL_ROOT_PASSWORD: 'root'
+        #             MYSQL_DATABASE: 'ee-test'
+        #         ports:
+        #             - 3306/tcp
+        #         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
         strategy:
             matrix:
@@ -43,7 +43,7 @@ jobs:
             - name: Install System dependencies
               run: |
                 sudo apt-get update
-                sudo apt-get -yqq install g++ qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x libmysqlclient-dev
+                sudo apt-get -yqq install xvfb g++ qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x libmysqlclient-dev
 
             - name: Install Ruby dependencies
               run: |
@@ -60,4 +60,4 @@ jobs:
 
             - name: Run RSpec tests
               working-directory: tests/rspec
-              run: bundle exec rspec -c -fd -fh tests/**/*.rb
+              run: xvfb-run -a bundle exec rspec -c -fd -fh tests/**/*.rb
