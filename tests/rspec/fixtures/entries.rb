@@ -18,9 +18,9 @@ end
 # Default Options
 options = {
   :adapter  => 'mysql2',
-  :database => 'expressionengine',
+  :database => 'ee-test',
   :username => 'root',
-  :password => '',
+  :password => 'root',
   :number   => 20
 }
 
