@@ -42,6 +42,7 @@ jobs:
 
             - name: Install Ruby dependencies
               run: |
+                sudo apt-get -yqq install qt-sdk chromium-chromedriver
                 gem install bundler
                 bundle install --no-deployment --gemfile=tests/rspec/Gemfile --path=~/gems/
 
