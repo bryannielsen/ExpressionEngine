@@ -42,7 +42,7 @@ jobs:
 
             - name: Install Ruby dependencies
               run: |
-                sudo apt-get -yqq install qt-sdk chromium-chromedriver
+                sudo apt-get -yqq install g++ qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
                 gem install bundler
                 bundle install --no-deployment --gemfile=tests/rspec/Gemfile --path=~/gems/
 
