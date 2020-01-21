@@ -388,6 +388,7 @@ feature 'File Manager / Crop File' do
 
   it 'shows an error if the file has no write permissions' do
     FileUtils.chmod 0444, Dir.glob(@upload_dir + '/*.{gif,jpg,png}'), :verbose => true
+    print File.stat(@upload_dir + '/staff_jason.png').mode.to_s(8).split("")[-4..-1].join
     @page.load
     no_php_js_errors
 
