@@ -95,7 +95,7 @@ jobs:
 
             - name: Run RSpec tests
               working-directory: tests/rspec
-              run: sudo xvfb-run -a bundle exec rspec -c -fd -fh -o screenshots/rspec.html tests/files/test_crop.rb
+              run: xvfb-run -a bundle exec rspec -c -fd -fh -o screenshots/rspec.html tests/files/test_crop.rb
 
             - name: Archive RSpec output
               uses: actions/upload-artifact@v1
