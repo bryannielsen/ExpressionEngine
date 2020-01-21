@@ -81,7 +81,7 @@ jobs:
                 bundle install --no-deployment --gemfile=tests/rspec/Gemfile --jobs 4 --retry 3 --path=vendor/bundle
 
             - name: Start webserver
-              run: sudo php -S localhost:80 &
+              run: php -S localhost:80
 
             - name: Current Directory
               run: php -r "echo __DIR__;"
