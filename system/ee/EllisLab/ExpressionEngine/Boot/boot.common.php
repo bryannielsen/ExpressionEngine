@@ -171,8 +171,10 @@ require_once SYSPATH . '/ee/EllisLab/ExpressionEngine/Library/Compat/Random/rand
 		if ( ! isset($config) OR ! is_array($config))
 		{
             set_status_header(503);
-            $contents = file_get_contents($basepath.'config/config.php');
-            echo json_encode(compact('config', 'basepath', 'contents'), JSON_PRETTY_PRINT);
+            $configFile = $basepath.'config/config.php';
+            $contents = file_get_contents($configFile);
+            $stats = stat($configFile);
+            echo json_encode(compact('config', 'configFile', 'contents', 'stats'), JSON_PRETTY_PRINT);
 			exit('Your config file does not appear to be formatted correctly.');
 		}
 
