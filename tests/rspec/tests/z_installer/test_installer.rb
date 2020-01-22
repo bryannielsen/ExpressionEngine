@@ -131,10 +131,11 @@ feature 'Installer' do
 
       no_php_js_errors
       @installer.disable_installer
+      print @env
+      print File.read(@env)
       print @config
       print File.read(@config)
       @page.install_success.login_button.click
-      Capybara::Screenshot.screenshot_and_save_page
       cp_session
 
       @settings = UrlsSettings.new
