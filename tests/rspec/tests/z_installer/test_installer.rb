@@ -134,6 +134,7 @@ feature 'Installer' do
       print @config
       print File.read(@config)
       @page.install_success.login_button.click
+      Capybara::Screenshot.screenshot_and_save_page
       cp_session
 
       @settings = UrlsSettings.new
