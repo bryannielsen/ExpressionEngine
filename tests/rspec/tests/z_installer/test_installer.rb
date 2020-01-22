@@ -163,6 +163,11 @@ feature 'Installer' do
   end
 
   context 'when using invalid database credentials' do
+    before(:each) do
+        print @config
+        print File.read(@config)
+    end
+
     it 'shows an error with no database credentials' do
       @page.install_form.install_submit.click
 
@@ -211,6 +216,11 @@ feature 'Installer' do
   end
 
   context 'when using an invalid database prefix' do
+    before(:each) do
+        print @config
+        print File.read(@config)
+    end
+
     it 'shows an error when the database prefix is too long' do
       @page.execute_script("$('input[maxlength=30]').prop('maxlength', 80);")
       @page.install_form.db_prefix.set '1234567890123456789012345678901234567890'
@@ -235,6 +245,11 @@ feature 'Installer' do
   end
 
   context 'when using an invalid username' do
+    before(:each) do
+        print @config
+        print File.read(@config)
+    end
+
     it 'shows an error when using invalid characters' do
       @page.install_form.username.set 'non<>sense'
       @page.install_form.install_submit.click
@@ -259,6 +274,11 @@ feature 'Installer' do
   end
 
   context 'when using an invalid email address' do
+    before(:each) do
+        print @config
+        print File.read(@config)
+    end
+
     it 'shows an error when no domain is supplied' do
       @page.install_form.email_address.set 'nonsense'
       @page.install_form.install_submit.click
@@ -282,6 +302,11 @@ feature 'Installer' do
   end
 
   context 'when using an invalid password' do
+    before(:each) do
+        print @config
+        print File.read(@config)
+    end
+
     it 'shows an error when the password is too short' do
       @page.install_form.password.set '123'
       @page.install_form.install_submit.click
@@ -307,6 +332,11 @@ feature 'Installer' do
   end
 
   context 'when not agreeing to the license agreement' do
+    before(:each) do
+        print @config
+        print File.read(@config)
+    end
+
     it 'will not install without the license agreement checked' do
       @page.install_form.db_hostname.set '127.0.0.1'
       @page.install_form.db_name.set $test_config[:db_name]
