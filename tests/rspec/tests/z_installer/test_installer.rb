@@ -132,10 +132,12 @@ feature 'Installer' do
 
       no_php_js_errors
       @installer.disable_installer
-      print @env
-      print File.read(@env)
-      print @config
-      print File.read(@config)
+
+      #print @env
+      #print File.read(@env)
+      File.rename '../../system/ee/installer' '../../system/ee/installer_old'
+      #print @config
+      #print File.read(@config)
       @page.install_success.login_button.click
       cp_session
 
