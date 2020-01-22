@@ -10,6 +10,7 @@ feature 'Installer' do
   before :each do
     # Delete existing config and create a new one
     @config = File.expand_path('../../system/user/config/config.php')
+    @env = File.expand_path('../../.env.php')
     File.delete(@config) if File.exist?(@config)
     File.new(@config, 'w')
     FileUtils.chmod(0666, @config)
