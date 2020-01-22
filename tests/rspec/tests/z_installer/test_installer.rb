@@ -133,11 +133,11 @@ feature 'Installer' do
       no_php_js_errors
       @installer.disable_installer
 
-      #print @env
-      #print File.read(@env)
+      print @env
+      print File.read(@env)
       File.rename '../../system/ee/installer', '../../system/ee/installer_old'
-      #print @config
-      #print File.read(@config)
+      print @config
+      print File.read(@config)
       @page.install_success.login_button.click
       cp_session
 
@@ -164,11 +164,14 @@ feature 'Installer' do
       @settings.captcha_path.value.should include '{base_path}'
 
       @installer.enable_installer
+      File.rename '../../system/ee/installer_old', '../../system/ee/installer'
     end
   end
 
   context 'when using invalid database credentials' do
     before(:each) do
+        print @env
+        print File.read(@env)
         print @config
         print File.read(@config)
     end
