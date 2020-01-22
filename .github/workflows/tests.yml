@@ -70,7 +70,7 @@ jobs:
             - name: Cache Ruby Dependencies
               uses: actions/cache@v1
               with:
-                path: vendor/bundle
+                path: tests/rspec/vendor/bundle
                 key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
                 restore-keys: |
                     ${{ runner.os }}-gems-

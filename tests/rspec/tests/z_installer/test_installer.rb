@@ -135,7 +135,7 @@ feature 'Installer' do
 
       #print @env
       #print File.read(@env)
-      File.rename '../../system/ee/installer' '../../system/ee/installer_old'
+      File.rename '../../system/ee/installer', '../../system/ee/installer_old'
       #print @config
       #print File.read(@config)
       @page.install_success.login_button.click
