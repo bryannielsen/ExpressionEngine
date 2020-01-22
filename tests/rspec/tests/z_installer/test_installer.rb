@@ -131,6 +131,8 @@ feature 'Installer' do
 
       no_php_js_errors
       @installer.disable_installer
+      print @config
+      print File.read(@config)
       @page.install_success.login_button.click
       cp_session
 

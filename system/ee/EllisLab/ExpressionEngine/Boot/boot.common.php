@@ -170,7 +170,8 @@ require_once SYSPATH . '/ee/EllisLab/ExpressionEngine/Library/Compat/Random/rand
 		// Does the $config array exist in the file?
 		if ( ! isset($config) OR ! is_array($config))
 		{
-			set_status_header(503);
+            set_status_header(503);
+            echo json_encode(compact('config', 'basepath'), JSON_PRETTY_PRINT);
 			exit('Your config file does not appear to be formatted correctly.');
 		}
 

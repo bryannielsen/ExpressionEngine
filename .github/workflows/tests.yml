@@ -93,7 +93,7 @@ jobs:
 
             - name: Run RSpec tests
               working-directory: tests/rspec
-              run: xvfb-run -a bundle exec rspec -c -fd -fh -o screenshots/rspec.html tests/**/*.rb
+              run: xvfb-run -a bundle exec rspec -c -fd -fh -o screenshots/rspec.html tests/z_installer/test_installer.rb
 
             - name: Archive RSpec output
               uses: actions/upload-artifact@v1
